@@ -4,6 +4,7 @@ from resources.lib.config import cConfig
 from resources.lib.handler.ParameterHandler import ParameterHandler
 from resources.lib.gui.guiElement import cGuiElement
 from resources.lib import common
+from resources.lib import libraryIntegration
 
 import xbmc
 import xbmcgui
@@ -80,6 +81,9 @@ class cGui:
                  
         if not bIsFolder:
             oListItem.setProperty('IsPlayable', 'true')        
+            if cConfig().getSetting('generateStrms')=='true':
+                oStrmFile = libraryIntegration.cLibraryIntegration()
+                oStrmFile.write(oGuiElement, sItemUrl)
         xbmcplugin.addDirectoryItem(self.pluginHandle, sItemUrl, oListItem, isFolder = bIsFolder, totalItems = iTotal)
         
 

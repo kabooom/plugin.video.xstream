@@ -36,6 +36,9 @@
   <string id="30083">Benutzername</string>
   <string id="30084">Passwort</string>
   
+  <!-- Streamgenerator begins at 30090 -->
+  <string id="30090">STRM Dateien bei der Suche erzeugen</string>
+  <string id="30091">Ordner für STRM Dateien</string>
   
   <string id="30302">Staffeln Deutsch</string>
   <string id="30303">Staffeln Englisch</string>

@@ -12,6 +12,8 @@
     <setting default="false" enable="!eq(-1,false)" id="metaOverwrite" label="30008" type="bool" />
     <setting default="600" id="cacheTime" label="30006" type="number" />
     <setting default="false" id="showAdult" label="30003" type="bool" />
+    <setting default="false" id="generateStrms" label="30090" type="bool" />
+    <setting default="/tmp" id="StrmFolder" label="30091" option="writeable" source="auto" type="folder" />
     <setting type="sep" />
   </category> 
   <category label="30022">
@@ -75,3 +77,4 @@
     <setting default="" enable="!eq(-4,false)" id="pyload_passwd" label="30084" option="hidden" type="text" />
   </category> 
 </settings>
+

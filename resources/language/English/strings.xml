@@ -35,6 +35,10 @@
   <string id="30082">PyLoad on/off</string>
   <string id="30083">Username</string>
   <string id="30084">Password</string>
+
+  <!-- Streamgenerator begins at 30090 -->
+  <string id="30090">Create STRM files while searching</string>
+  <string id="30091">Folder for STRM files</string>
   
   <string id="30302">Seasons german</string>
   <string id="30303">Seasons english</string>
