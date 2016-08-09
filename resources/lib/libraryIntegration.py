@@ -5,6 +5,7 @@ from resources.lib import logger
 import urllib
 import os
 import xbmc
+import time
 
 class cLibraryIntegration:
 
@@ -16,12 +17,12 @@ class cLibraryIntegration:
 
     def __mangleFilename(self):
         self.__sFilename = self.__sFilename.replace(":"," - ")
+        self.__sFilename = self.__sFilename.replace("/","-")
 
     def __buildFilename(self, oGuiElement, itemValues):
-        sTitle = oGuiElement.getTitle()
+        sTitle = oGuiElement.getTitle().strip()
         sMediaType = oGuiElement._mediaType
         if sMediaType == 'movie':
-            logger.info("isMovie")
             self.__sRelPath = 'Movies/'
         elif sMediaType == 'episode':
             logger.info("isEpisode")
@@ -43,6 +44,13 @@ class cLibraryIntegration:
             fStrmFile = open(sFullFilename, 'w')
             fStrmFile.write(self.__sContent + '\n') 
             fStrmFile.close() 
+        else:
+            # replace old strm files once in a while
+            if time.time() - os.path.getmtime(sFullFilename) > (3 * 30 * 24 * 60 * 60):
+                fStrmFile = open(sFullFilename, 'w')
+                fStrmFile.truncate()
+                fStrmFile.write(self.__sContent + '\n')
+                fStrmFile.close()
 
     def write(self, oGuiElement, sItemUrl):
         itemValues = oGuiElement.getItemValues()
