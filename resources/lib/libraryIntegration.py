@@ -6,6 +6,7 @@ import urllib
 import os
 import xbmc
 import time
+import re
 
 class cLibraryIntegration:
 
@@ -15,12 +16,12 @@ class cLibraryIntegration:
         self.__sRelPath = ''
         self.__sContent = ''
 
-    def __mangleFilename(self):
-        self.__sFilename = self.__sFilename.replace(":"," - ")
-        self.__sFilename = self.__sFilename.replace("/","-")
-
     def __buildFilename(self, oGuiElement, itemValues):
         sTitle = oGuiElement.getTitle().strip()
+        sTitle = re.sub(' \(.*\)', '', sTitle)
+        sTitle = sTitle.replace(":"," - ")
+        sTitle = sTitle.replace("/","-")
+        sTitle = ' '.join(sTitle.split())
         sMediaType = oGuiElement._mediaType
         if sMediaType == 'movie':
             self.__sRelPath = 'Movies/'
@@ -56,6 +57,5 @@ class cLibraryIntegration:
         itemValues = oGuiElement.getItemValues()
         self.__sContent = sItemUrl
         self.__buildFilename(oGuiElement, itemValues)
-        self.__mangleFilename()
         self.__writeFile()
 
