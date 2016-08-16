@@ -19,6 +19,7 @@
     - [2.3 Webseiten Aktivieren und Deaktivieren](#23-webseiten-aktivieren-und-deaktivieren)
     - [2.4 Manuelle und automatische Hosterwahl](#24-manuelle-und-automatische-hosterwahl)
     - [2.5 Funktion des Metahandlers](#25-funktion-des-metahandlers)
+    - [2.6 Library Integration](#26-library-integration)
  
  
 - [3. Bekannte Probleme](#3-bekannte-probleme)
@@ -170,7 +171,17 @@ Für schwache Systeme ist dieses Feature nur bedingt zu empfehlen und muss vom j
 
 - ***ACHTUNG:*** Da viele Seiten nicht sofort genug Informationen bereitstellen um jeden Film eindeutig zu identifizieren kann es vorkommen, dass alle angezeigten Informationen nicht zum tatsächlich verlinkten Film passen.
 
+### 2.6 Library Integration
 
+Wenn die Library Funktionen von Kodi benutzt werden sollen, kann die Option:
+
+- **STRM Dateien bei der Suche erzeugen**
+
+eingeschaltet werden. Dabei muss ein Verzeichnis angegeben werden, in welchem xStream für alle angezeigten Filme und Serien .strm Dateien ablegt. Es ist dringend angeraten ein Verzeichnis für die alleinige Verwendung durch xStream und außerhalb der eigentlichen Kodi Library anzulegen, da xStream in diesem Verzeichnis auch Dateien überschreibt. Innerhalb dieses Verzeichnisses legt xStream zwei Ordner an: Movies und TVShows. Diese können dann manuell zu der Kodi Library hinzugefügt werden.
+
+- ***ACHTUNG:*** Es werden ALLE Filme zu der Library hinzugefügt, auch erotische Inhalte.
+
+Die generierten .strm Dateien werden, falls der Film erneut in xStream angezeigt wird, nach 30 Tagen mit einem neuen Stream überschrieben, um veralteten Links entgegen zu wirken.
 
 ## 3. Bekannte Probleme
 
