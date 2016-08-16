@@ -23,15 +23,19 @@ class cLibraryIntegration:
         sTitle = sTitle.replace("/","-")
         sTitle = ' '.join(sTitle.split())
         sMediaType = oGuiElement._mediaType
-        if sMediaType == 'movie':
-            self.__sRelPath = 'Movies/'
-        elif sMediaType == 'episode':
+        if sMediaType == 'episode':
             logger.info("isEpisode")
             sSeason = itemValues['season']
             sEpisode = itemValues['episode']
             sTVShowTitle = itemValues['TVShowTitle']
             self.__sRelPath = 'TVShows/' + sTVShowTitle + '/Staffel ' + sSeason
-            sTitle = '/S' + sSeason + 'E' + sTitle
+            sTitle = '/S' + sSeason + 'E' + sEpisode + ' - ' + sTitle
+        else:
+            pattern = re.compile('[\W_]+', re.UNICODE)
+            sDirTitle = pattern.sub('', sTitle.lower())
+            sDirA = sDirTitle[0]
+            sDirB = sDirTitle[1]
+            self.__sRelPath = 'Movies/' + sDirA + '/' + sDirB + '/' 
 
         self.__sFilename = sTitle + '.strm'
 
