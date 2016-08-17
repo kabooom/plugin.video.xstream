@@ -16,7 +16,8 @@ class cLibraryIntegration:
         self.__sRelPath = ''
         self.__sContent = ''
 
-    def __buildFilename(self, oGuiElement, itemValues):
+    def __buildFilename(self, oGuiElement):
+        itemValues = oGuiElement.getItemValues()
         sTitle = oGuiElement.getTitle().strip()
         sTitle = re.sub(' \(.*\)', '', sTitle)
         sTitle = sTitle.replace(":"," - ")
@@ -58,8 +59,7 @@ class cLibraryIntegration:
                 fStrmFile.close()
 
     def write(self, oGuiElement, sItemUrl):
-        itemValues = oGuiElement.getItemValues()
         self.__sContent = sItemUrl
-        self.__buildFilename(oGuiElement, itemValues)
+        self.__buildFilename(oGuiElement)
         self.__writeFile()
 
