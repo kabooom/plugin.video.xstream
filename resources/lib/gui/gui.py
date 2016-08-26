@@ -47,6 +47,7 @@ class cGui:
         self.globalSearch = False
         self._collectMode = False
         self.searchResults = []
+        self.generateStrms = cConfig().getSetting('generateStrms')=='true'
 
 
 
@@ -81,7 +82,7 @@ class cGui:
                  
         if not bIsFolder:
             oListItem.setProperty('IsPlayable', 'true')        
-            if cConfig().getSetting('generateStrms')=='true':
+            if self.generateStrms:
                 oStrmFile = libraryIntegration.cLibraryIntegration()
                 oStrmFile.write(oGuiElement, sItemUrl)
         xbmcplugin.addDirectoryItem(self.pluginHandle, sItemUrl, oListItem, isFolder = bIsFolder, totalItems = iTotal)
